@@ -66,4 +66,16 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    //LiveData
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.8.0")
+    implementation ("androidx.compose.runtime:runtime-livedata:1.6.7")
+
+    //Koin
+    implementation ("io.insert-koin:koin-android:3.4.0")
+    implementation ("io.insert-koin:koin-androidx-compose:3.4.0")
 }
