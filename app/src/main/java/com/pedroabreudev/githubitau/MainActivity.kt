@@ -9,9 +9,12 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.pedroabreudev.githubitau.ui.detail.RepositoryDetailScreen
 import com.pedroabreudev.githubitau.ui.list.RepositoryListScreen
 import com.pedroabreudev.githubitau.ui.theme.GithubItauTheme
 
@@ -39,14 +42,22 @@ fun App() {
         composable(route = "repositoryList") {
             RepositoryListScreen(navController = navController)
         }
-
+        composable(
+            route = "repositoryDetails/{repositoryId}",
+            arguments = listOf(navArgument(name = "repositoryId") {
+                type = NavType.IntType
+            })
+        ) { backStackEntry ->
+            val repositoryId = backStackEntry.arguments?.getInt("repositoryId") ?: return@composable
+            RepositoryDetailScreen(repositoryId = repositoryId, navController = navController)
+        }
     }
 
 }
 
 @Preview(showBackground = true)
 @Composable
-fun AppPreview() {
+private fun AppPreview() {
     GithubItauTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
