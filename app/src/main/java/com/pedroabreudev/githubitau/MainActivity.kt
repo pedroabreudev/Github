@@ -15,15 +15,16 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.pedroabreudev.githubitau.ui.detail.RepositoryDetailScreen
+import com.pedroabreudev.githubitau.ui.home.HomeScreen
 import com.pedroabreudev.githubitau.ui.list.RepositoryListScreen
 import com.pedroabreudev.githubitau.ui.theme.GithubItauTheme
+import com.pedroabreudev.githubitau.utils.Screen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             GithubItauTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -38,21 +39,33 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun App() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "repositoryList") {
-        composable(route = "repositoryList") {
-            RepositoryListScreen(navController = navController)
+    NavHost(navController = navController, startDestination = Screen.Home.route) {
+        composable(Screen.Home.route) {
+            HomeScreen(navController = navController)
         }
         composable(
-            route = "repositoryDetails/{repositoryId}",
-            arguments = listOf(navArgument(name = "repositoryId") {
+            Screen.RepositoryList.route,
+            arguments = listOf(navArgument(Screen.RepositoryList.ARG_USER) {
+                type = NavType.StringType
+            })
+        ) { backStackEntry ->
+            val user =
+                backStackEntry.arguments?.getString(Screen.RepositoryList.ARG_USER) ?: "android"
+            RepositoryListScreen(navController = navController, user = user)
+        }
+        composable(
+            Screen.RepositoryDetail.route,
+            arguments = listOf(navArgument(Screen.RepositoryDetail.ARG_REPOSITORY_ID) {
                 type = NavType.IntType
             })
         ) { backStackEntry ->
-            val repositoryId = backStackEntry.arguments?.getInt("repositoryId") ?: return@composable
-            RepositoryDetailScreen(repositoryId = repositoryId, navController = navController)
+            val repositoryId =
+                backStackEntry.arguments?.getInt(Screen.RepositoryDetail.ARG_REPOSITORY_ID)
+            repositoryId?.let { id ->
+                RepositoryDetailScreen(repositoryId = id, navController = navController)
+            }
         }
     }
-
 }
 
 @Preview(showBackground = true)

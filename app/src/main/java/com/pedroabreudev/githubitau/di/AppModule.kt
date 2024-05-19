@@ -3,6 +3,7 @@ package com.pedroabreudev.githubitau.di
 import com.pedroabreudev.githubitau.network.GithubApi
 import com.pedroabreudev.githubitau.network.NetworkConstants.BASE_URL
 import com.pedroabreudev.githubitau.repository.GithubRepository
+import com.pedroabreudev.githubitau.viewmodel.HomeViewModel
 import com.pedroabreudev.githubitau.viewmodel.RepositoryDetailViewModel
 import com.pedroabreudev.githubitau.viewmodel.RepositoryViewModel
 import okhttp3.OkHttpClient
@@ -17,6 +18,7 @@ val appModule = module {
     single { GithubRepository(get()) }
     viewModel<RepositoryViewModel> { RepositoryViewModel(get()) }
     viewModel<RepositoryDetailViewModel> { RepositoryDetailViewModel(get()) }
+    viewModel<HomeViewModel> { HomeViewModel() }
 
 }
 
