@@ -20,6 +20,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
 import com.pedroabreudev.githubitau.R
 import com.pedroabreudev.githubitau.model.RepositoryModel
@@ -84,7 +85,8 @@ fun RepositoryDetail(repository: RepositoryModel, navController: NavController) 
                 Text(
                     text = "Nome: ${repository.name}",
                     maxLines = ONE,
-                    fontSize = FontSize.default.fontSize_md
+                    fontSize = FontSize.default.fontSize_md,
+                    fontWeight = FontWeight.Bold
                 )
 
                 repository.description?.let {
