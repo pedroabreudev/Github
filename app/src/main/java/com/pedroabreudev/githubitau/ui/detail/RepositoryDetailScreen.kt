@@ -20,10 +20,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.pedroabreudev.githubitau.R
 import com.pedroabreudev.githubitau.model.RepositoryModel
+import com.pedroabreudev.githubitau.ui.theme.FontSize
 import com.pedroabreudev.githubitau.ui.theme.Size
 import com.pedroabreudev.githubitau.utils.Constants.ONE
 import com.pedroabreudev.githubitau.viewmodel.RepositoryDetailViewModel
@@ -71,68 +71,65 @@ fun RepositoryDetail(repository: RepositoryModel, navController: NavController) 
             title = {
                 Text(text = "Detalhes do Repositório")
             })
-        Card(modifier = Modifier
-            .fillMaxWidth()
-            .padding(Size.default.size_10)) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(Size.default.size_10)
+        ) {
             Column(
                 modifier = Modifier
                     .padding(Size.default.size_16)
                     .verticalScroll(rememberScrollState())
             ) {
-
                 Text(
-                    text = "Nome ${repository.name}",
-                    maxLines = ONE
+                    text = "Nome: ${repository.name}",
+                    maxLines = ONE,
+                    fontSize = FontSize.default.fontSize_md
                 )
-                Text(text = repository.description ?: "Sem descrição")
 
+                repository.description?.let {
+                    Spacer(modifier = Modifier.height(Size.default.size_6))
+                    Text(
+                        text = "Descrição: ${repository.description}",
+                        fontSize = FontSize.default.fontSize_sm
+                    )
+
+                }
                 Spacer(modifier = Modifier.height(Size.default.size_16))
 
                 Column {
                     Row {
-
-                        Icon(
-                            painterResource(id = R.drawable.ic_star_border),
-                            contentDescription = "",
-                            modifier = Modifier
-                                .height(Size.default.size_24)
-                                .width(Size.default.size_24)
+                        IconDetail(
+                            painter = R.drawable.ic_star_border,
+                            description = "ícone estrela"
                         )
                         Spacer(modifier = Modifier.width(Size.default.size_4))
-                        Text(
-                            text = "Stars: ${repository.stargazersCount}",
-                            modifier = Modifier.padding(bottom = 4.dp)
-                        )
+                        Text(text = "Stars: ${repository.stargazersCount}")
 
                         Spacer(modifier = Modifier.width(Size.default.size_16))
-                        Icon(
-                            painterResource(id = R.drawable.ic_fork),
-                            contentDescription = "",
-                            modifier = Modifier
-                                .height(Size.default.size_24)
-                                .width(Size.default.size_24)
-                        )
+
+                        IconDetail(painter = R.drawable.ic_fork, description = "ícone fork")
                         Spacer(modifier = Modifier.width(Size.default.size_4))
-                        Text(
-                            text = "Forks: ${repository.forksCount}",
-                            modifier = Modifier.padding(bottom = 4.dp)
-                        )
+                        Text(text = "Forks: ${repository.forksCount}")
+
                         Spacer(modifier = Modifier.width(Size.default.size_16))
-                        Icon(
-                            painterResource(id = R.drawable.ic_filter),
-                            contentDescription = "",
-                            modifier = Modifier
-                                .height(24.dp)
-                                .width(24.dp)
-                        )
+
+                        IconDetail(painter = R.drawable.ic_filter, description = "ícone problemas")
                         Spacer(modifier = Modifier.width(Size.default.size_4))
-                        Text(
-                            text = "Issues: ${repository.openIssuesCount}",
-                            modifier = Modifier.padding(bottom = 4.dp)
-                        )
+                        Text(text = "Issues: ${repository.openIssuesCount}")
                     }
                 }
             }
         }
     }
+}
+
+@Composable
+private fun IconDetail(painter: Int, description: String = "") {
+    Icon(
+        modifier = Modifier
+            .height(Size.default.size_24)
+            .width(Size.default.size_24),
+        painter = painterResource(id = painter), contentDescription = description
+    )
 }
