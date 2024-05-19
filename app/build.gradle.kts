@@ -76,6 +76,11 @@ dependencies {
     implementation ("androidx.compose.runtime:runtime-livedata:1.6.7")
 
     //Koin
-    implementation ("io.insert-koin:koin-android:3.4.0")
     implementation ("io.insert-koin:koin-androidx-compose:3.4.0")
+
+    //Test
+    testImplementation ("io.mockk:mockk:1.12.0")
+    testImplementation ("org.mockito:mockito-core:3.9.0")
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.0")
+    testImplementation ("androidx.arch.core:core-testing:2.1.0")
 }
