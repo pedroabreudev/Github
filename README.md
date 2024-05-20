@@ -16,10 +16,20 @@ This app is made to query a user's github repositories and repository details. D
   - [Koin](https://insert-koin.io/docs/quickstart/android-compose): for dependency injection.
   - LiveData
   - Coroutines
+    
+- Test
+  - JUnit
+  - Mockito
 
-## Test
-- JUnit
-- Mockito
+
+## Screenshots  
+<div style="display: flex; width: 100%">
+  <img src="https://github.com/pedroabreudev/Github/blob/develop/Screenshots/Github_01.png?raw=true" width="19%"/>
+  <img src="https://github.com/pedroabreudev/Github/blob/develop/Screenshots/Github_02.png?raw=true" width="19%"/>
+  <img src="https://github.com/pedroabreudev/Github/blob/develop/Screenshots/Github_03.png?raw=true" width="19%"/>
+  <img src="https://github.com/pedroabreudev/Github/blob/develop/Screenshots/Github_04.png?raw=true" width="19%"/>
+  <img src="https://github.com/pedroabreudev/Github/blob/develop/Screenshots/Github_05.png?raw=true" width="19%"/>
+</div>
 
 
 ## Configuração do Ambiente
