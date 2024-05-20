@@ -23,7 +23,7 @@ This app is made to query a user's github repositories and repository details. D
 
 
 ## Configuração do Ambiente
-1. Clone este repositório através da branch developer. (https://github.com/pedroabreudev/GithubItau/tree/develop)
+1. Clone este repositório através da branch develop. (https://github.com/pedroabreudev/GithubItau/tree/develop)
 2. Abra o projeto no Android Studio.
 3. Sincronize o projeto com os arquivos Gradle.
 4. Execute o aplicativo em um emulador ou dispositivo Android.
