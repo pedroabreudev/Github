@@ -23,11 +23,11 @@ This app is made to query a user's github repositories and repository details. D
 
 
 ## Configuração do Ambiente
-1. Clone este repositório
+1. Clone este repositório através da branch developer. (https://github.com/pedroabreudev/GithubItau/tree/develop)
 2. Abra o projeto no Android Studio.
 3. Sincronize o projeto com os arquivos Gradle.
 4. Execute o aplicativo em um emulador ou dispositivo Android.
-5. Insira no HomeScreen o nome de usuário do Github que deseja consultar a listagem de repositórios e ver os detalhes.
+5. Insira na Home o nome de usuário do Github que deseja consultar a listagem de repositórios e ver os detalhes.
 
 ## API do GitHub
 
